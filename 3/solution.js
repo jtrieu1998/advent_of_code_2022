@@ -26,3 +26,20 @@ inputArray.forEach((line, index)=>{
 
 console.log('Part 1:', prioritiesSum)
 
+let sacks = []
+prioritiesSum = 0
+inputArray.forEach((line, index)=>{
+  sacks.push(line)
+  if(sacks.length === 3){
+    for(let i = 0; i < line.length; i++){
+      if(sacks[0].includes(line[i]) && sacks[1].includes(line[i])){
+        prioritiesSum += letterScoringMap.get(line[i])
+        sacks = []
+        break;
+      }
+    }
+    sacks = []
+  }
+})
+
+console.log('Part 2:', prioritiesSum)

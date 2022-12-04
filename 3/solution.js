@@ -9,14 +9,20 @@ for(let i = 0; i < 26; i++){
 }
 
 for(let i = 27; i < 53; i++){
-  // console.log(String.fromCharCode(i))
   letterScoringMap.set(String.fromCharCode(i+38),i)
 }
-console.log(inputArray[0])
-console.log(inputArray[0].substr(0,12), inputArray[0].substr(12,24))
-// console.log(inputArray[4].length)
 
 let half = 0
+let prioritiesSum = 0
 inputArray.forEach((line, index)=>{
   half = line.length/2
+  for(let i = 0; i < half; i++){
+    if(line.includes(line[i],half)){
+      prioritiesSum += letterScoringMap.get(line[i])
+      break;
+    }
+  }
 })
+
+console.log('Part 1:', prioritiesSum)
+
